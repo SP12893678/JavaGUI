@@ -102,6 +102,10 @@ public class ToggleBtn extends JComponent
 			timer.setInitialDelay(0);
 	   }
 	   
+	   public boolean getStatus() {
+		   return status;
+	   }
+	   
 	   private void setArea() {
 		    s = new RoundRectangle2D.Double(height - height/2.88, height - height/2.88, width, height/1.44, height/1.44, height/1.44);
 		    touchArea.add(new Area(s));
