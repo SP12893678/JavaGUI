@@ -33,13 +33,15 @@ public class Header extends JComponent {
 	public Color bar_bgcolor = new Color(33,33,33,150);
 	private String title_text = "Welcome to SP_GUI";
 	private Color title_textcolor = new Color(255,255,255,255);
-	private Image icon = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/spgui/res/img/java.png"))).getImage();
+	public Image icon = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/spgui/res/img/java.png"))).getImage();
 	private JFrame frame = null;
 	private Dot minDot,reDot,closeDot;
+	public boolean isControlsShow = true;
 	
-   public Header(int width,int height) {
+   public Header(int width,int height,boolean isControlsShow) {
 		this.width = width;
 		this.height = height;
+		this.isControlsShow = isControlsShow;
 		area.add(new Area(new RoundRectangle2D.Double(0, 0, width, height, 10, 10)));
 		setControlDot();
    }
@@ -51,6 +53,7 @@ public class Header extends JComponent {
    
    private void setControlDot()
    {
+	   	if(!isControlsShow) return;
 		 Color[] red = {new Color(235,90,90,255), new Color(255,111,111,255)}; 
 		 Color[] yellow = {new Color(234,158,60,255), new Color(252,173,70,255)}; 
 		 Color[] green = {new Color(75,197,82,255), new Color(76,235,98,255)}; 

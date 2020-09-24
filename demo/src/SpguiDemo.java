@@ -4,6 +4,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.BorderFactory;
+import javax.swing.Icon;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
@@ -11,9 +12,13 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.event.CaretEvent;
 import javax.swing.event.CaretListener;
 
+import jiconfont.icons.font_awesome.FontAwesome;
+import jiconfont.swing.IconFontSwing;
 import spgui.SPWindow;
+import spgui.componenet.Button;
 import spgui.componenet.SliderX;
 import spgui.componenet.ToggleBtn;
+import spgui.componenet.UploadArea;
 
 /**
 * This class is the Demo for Spgui.
@@ -33,6 +38,24 @@ public class SpguiDemo extends SPWindow{
 		setTitle("SpguiDemo");
 		CreatColorPalette();
 		CreatToogleBtn();
+		
+		UploadArea uploader = new UploadArea(150,150,64,14,8);
+		uploader.setBounds(200, 10, 500, 500);
+		addi(uploader);
+		
+		Color pink = new Color(255,60,150);
+		IconFontSwing.register(FontAwesome.getIconFont());
+		Icon icon = IconFontSwing.buildIcon(FontAwesome.APPLE, 24,pink);
+		Button btn = new Button(150,40,24,icon,pink,"APPLE",8);
+		btn.setBounds(400, 20, 300, 300);
+		addi(btn);
+		
+		Color blue = new Color(60,150,255);
+		icon = IconFontSwing.buildIcon(FontAwesome.FACEBOOK_OFFICIAL, 24,blue);
+		btn = new Button(180,44,24,icon,blue,"Facebook",8);
+		btn.setBounds(400, 75, 300, 300);
+		addi(btn);
+
 	}
 
 	public void CreatColorPalette() {

@@ -1,5 +1,6 @@
 package spgui;
 import java.awt.*;
+
 import javax.swing.*;
 
 import spgui.componenet.BoxShadow;
@@ -20,7 +21,7 @@ import spgui.winodw.Header;
 * @param	height The value to be the height of windows.
 */
 
-public class SPWindow extends JFrame {
+public class SPDialog extends JDialog {
 
 	private static final long serialVersionUID = 1L;
 	private JLayeredPane pane = new JLayeredPane();
@@ -30,16 +31,22 @@ public class SPWindow extends JFrame {
 	public Body windowContent;
 	private BoxShadow shadow;
 
-	public SPWindow() {
-		setFrame();
+	public SPDialog() {
+		setDialog();
 		setUI();
+		
+	      
+	 
 	}
 	
-   public SPWindow(int width,int height) {
+   public SPDialog(int width,int height) {
 	   this.width = width;
 	   this.height = height;
-	   setFrame();
+	   setDialog();
 	   setUI();
+    	JButton btn = new JButton("23");
+  		btn.setBounds(0, 0, 100, 50);
+  		  pane.add(btn,200);
    }
    
    public void setTitle(String title)
@@ -67,28 +74,22 @@ public class SPWindow extends JFrame {
 	   this.windowBar.icon = image;
    }
    
-   private void setFrame()
+   private void setDialog()
    {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLayout(null);
 		setUndecorated(true);
 		setBackground(new Color(0,0,0,0));
 		setSize(width, height);
 		setBounds(0,0,width + 4,height + 4);
 		setLocationByPlatform(true);
-   }
-   
-   public JFrame getFrame()
-   {
-	   return this;
+		setModal(true);
    }
    
    private void setUI()
    {
        pane.setBounds(0, 32, width + 4, height - 32);
        add(pane);
-       windowBar = new Header(width,32,true);
-       windowBar.isControlsShow = true;
+       windowBar = new Header(width,32,false);
        windowBar.setBounds(0, 0, width,32);
        DragListener drag = new DragListener(this);
        windowBar.addMouseListener(drag);
@@ -101,6 +102,10 @@ public class SPWindow extends JFrame {
        shadow = new BoxShadow(width,height);
        shadow.setBounds(0, 0, width + 4, height + 4);
        add(shadow);
+       
+
+
+ 
    }
    
    public void addi(JComponent j)

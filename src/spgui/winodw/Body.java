@@ -19,6 +19,7 @@ import javax.swing.*;
 public class Body extends JComponent {
 
 	private static final long serialVersionUID = 1L;
+	public Color color = new Color(254,253,254,255);
 	Graphics2D g2;
 	int width = 100;
 	int height = 32;
@@ -36,7 +37,7 @@ public class Body extends JComponent {
       g2.setRenderingHints( qualityHints );  
   	  Area area = new Area(new RoundRectangle2D.Double(0, 0, width, height, 16, 16));
   	  area.add(new Area(new RoundRectangle2D.Double(0, 0, width, 10, 2, 2)));
-  	  g2.setPaint(new Color(254,253,254,255));
+  	  g2.setPaint(color);
       g2.fill(area);
    } 
 }
